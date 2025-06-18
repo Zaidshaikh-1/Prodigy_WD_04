@@ -2,8 +2,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom right, #f0f0f0, #d9d9d9);
-    color: #333;
+    /* background: linear-gradient(to bottom right, #f0f0f0, #d9d9d9);
+    color: #333; */
 }
 
 #navbar{
@@ -27,7 +27,19 @@ body {
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 5px;
+    transition: color 0.3s ease;
 }
+body.dark-mode #navbar a {
+  color: #fff;
+}
+#navbar a:hover {
+  color: #007bff;
+}
+
+body.dark-mode #navbar a:hover {
+  color: #66b2ff;
+}
+
 
 #container {
     display: flex;
@@ -43,7 +55,7 @@ body {
     align-items: left;
     max-width: 400px;
     text-align:justify;
-    margin: 0 auto;
+    margin: 0 ;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -92,11 +104,20 @@ button:hover {
 }
 #amzn {
     width: 100%;
-    height: 15rem;
+    height: 20rem;
     max-width: 300px;
     border-radius: 12px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid #ccc;
+    padding: 16px;
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#amzn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.9);
 }
 #amzn img {
     width: 100%;
@@ -106,12 +127,22 @@ button:hover {
 
 #spam {
     width: 100%;
-    height: 15rem;
+    height: 20rem;
     max-width: 300px;
     border-radius: 12px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
+     border: 1px solid #ccc;
+    padding: 16px;
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+#spam:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+}
+
 #spam img {
     width: 100%;
     height: auto;
@@ -120,16 +151,32 @@ button:hover {
 
 #wapp {
     width: 100%;
-    height: 15rem;
+    height: 20rem;
     max-width: 300px;
     border-radius: 12px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
+     border: 1px solid #ccc;
+    padding: 16px;
+    border-radius: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+#wapp:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+}
+
 #wapp img {
     width: 100%;
     height: auto;
     border-radius: 12px;
+}
+
+.project-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit;         /* Keep text color normal */
+    display: block;         /* Make the anchor behave like a div */
 }
 
 #skills {
@@ -177,7 +224,7 @@ button:hover {
     flex-direction: column;
     gap: 12px;
     background: #f9f9f9;
-    padding: 24px;
+    padding: 10px;
     border-radius: 12px;
     /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
 }
@@ -222,10 +269,105 @@ button:hover {
 footer {
     text-align: center;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: ade8f4;
     backdrop-filter: blur(10px);
     box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.1);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     width: 100%;
     bottom: 0;
 }
+
+body {
+  background-color: white;
+  color: black;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+
+body.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+#nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  #nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  #nav-links.active {
+    display: flex;
+  }
+
+  body.dark-mode #nav-links {
+    background-color: #222;
+  }
+}
+
+#dark-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  padding: 8px 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark mode styling */
+body.dark-mode #dark-toggle {
+  background-color: #333;
+  color: white;
+}
+
+#menu-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+/* Optional styling */
+#menu-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode #menu-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+

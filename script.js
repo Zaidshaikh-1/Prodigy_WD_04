@@ -38,13 +38,41 @@ function downloadResume() {
 document.querySelector('button[onclick="downloadResume()"]')?.addEventListener('click', downloadResume);
 
 // 📬 CONTACT FORM + EMAILJS
-document.getElementById('contact-form')?.addEventListener('submit', function (e) {
-  e.preventDefault();
-  emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this, 'YOUR_PUBLIC_KEY')
-    .then(() => {
-      alert('✅ Message sent successfully!');
-      this.reset();
-    }, (error) => {
-      alert('❌ Error: ' + error.text);
-    });
+// document.getElementById('contact-form')?.addEventListener('submit', function (e) {
+//   e.preventDefault();
+//   emailjs.sendForm('service_q1yzt9p', 'template_hsr956l', this, 'kjUa5NCMHVp5cuEgm')
+//     .then(() => {
+//       alert('✅ Message sent successfully!');
+//       this.reset();
+//     }, (error) => {
+//       alert('❌ Error: ' + error.text);
+//     });
+// });
+document.addEventListener("DOMContentLoaded", function () {
+  emailjs.init("kjUa5NCMHVp5cuEgm");
+
+  const form = document.getElementById("contact-form");
+  const formWrapper = document.getElementById("form-wrapper");
+  const successMessage = document.getElementById("success-message");
+  const okButton = document.getElementById("ok-button");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_q1yzt9p", "template_hsr956l", this)
+      .then(() => {
+        // Hide form, show success message
+        formWrapper.classList.add("hide");
+        successMessage.classList.add("show");
+        form.reset();
+      }, (error) => {
+        alert("❌ Failed to send: " + error.text);
+      });
+  });
+
+  okButton.addEventListener("click", () => {
+    // Hide success, show form again
+    successMessage.classList.remove("show");
+    formWrapper.classList.remove("hide");
+  });
 });

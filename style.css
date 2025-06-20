@@ -64,17 +64,34 @@ body.dark-mode #navbar a:hover {
     width: 400px;
 }
 #pfp {
-    width: 150px;
+    /* width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin-bottom: 20px;
+    margin-bottom: 20px; */
+    width: 250px;         /* You can adjust this */
+    height: 350px;        /* Adjust height as needed */
+    overflow: hidden;
+    border-radius: 40px;  /* Rounded crop */
+    /* margin: auto; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-img {
-    max-width: 150%;
+#pfp img {
+    /* max-width: 150%;
     height: 200%;
-    border-radius: 50px;
+    border-radius: 50px; */
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+@media screen and (max-width: 768px) {
+  #pfp {
+    width: 180px;
+    height: 250px;
+  }
 }
 
 button {
@@ -117,7 +134,7 @@ button:hover {
 #amzn:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 0.9);
+    /* background: rgba(255, 255, 255, 0.9); */
 }
 #amzn img {
     width: 100%;
@@ -140,7 +157,7 @@ button:hover {
 #spam:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 0.9);
+    /* background: rgba(255, 255, 255, 0.9); */
 }
 
 #spam img {
@@ -164,7 +181,7 @@ button:hover {
 #wapp:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    background: rgba(255, 255, 255, 0.9);
+    /* background: rgba(255, 255, 255, 0.9); */
 }
 
 #wapp img {
@@ -186,22 +203,6 @@ button:hover {
     justify-content: space-evenly;
     padding: 60px 20px 20px 20px; /* Adjusted padding for navbar */
 }
-/* #html, #css, #js, #python {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 400px;
-    text-align: justify;
-    margin: 0 auto;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.8);
-    width: 200px;
-    height: 200px;
-} */
 
 #contact {
     display: flex;
@@ -255,6 +256,71 @@ button:hover {
 #contact textarea {
     resize: vertical;
 }
+input,
+textarea,
+button {
+  background-color: #ffffff;
+  color: #fcf9f9;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+/* Dark mode override */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode button {
+  background-color: #2a2a2a;   /* dark but not black */
+  color: #f1f1f1;              /* light text */
+  border: 1px solid #444;      /* softer border */
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #888;                 /* dimmed placeholder text */
+}
+body.dark-mode input:focus,
+body.dark-mode textarea:focus {
+  outline: none;
+  border-color: #00ffd0;
+  box-shadow: 0 0 6px #00ffd066;
+}
+
+#form-wrapper {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+/* Dark mode */
+body.dark-mode #form-wrapper {
+  background-color: #1f1f1f;  /* nice dark gray */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+#contact-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* Dark */
+body.dark-mode #contact-form {
+  background-color: #1f1f1f;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode label {
+  color: #f1f1f1; /* or #fff for pure white */
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: #888; /* softer gray for placeholder text */
+}
+
+
 
 @media (max-width: 600px) {
     #contact {
@@ -371,3 +437,76 @@ body.dark-mode #menu-toggle:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+
+#success-message {
+  display: none;
+  text-align: center;
+  padding: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+#success-message.show {
+  display: block;
+}
+#success-message {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+body.dark-mode #success-message {
+  background-color: #1f1f1f;
+}
+
+#form-wrapper.hide {
+  display: none;
+}
+
+#ok-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #008cba;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#ok-button:hover {
+  background-color: #005f73;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#about,
+#contact {
+  background-color: #ffffff; /* or a very light shade */
+  color: #000;               /* ensure text is readable */
+  transition: background 0.3s, color 0.3s;
+}
+body.dark-mode #about,
+body.dark-mode #contact {
+  background-color: #1e1e1e; /* deep dark, not gray */
+  color: #f1f1f1;            /* light text for contrast */
+}
+body, #about, #contact {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}

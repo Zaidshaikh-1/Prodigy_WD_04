@@ -33,7 +33,7 @@ document.querySelectorAll('#nav-links a').forEach(link => {
 
 // 📥 DOWNLOAD RESUME
 function downloadResume() {
-  window.open('Resume.pdf', '_blank');
+  window.open('Resume_3.pdf', '_blank');
 }
 document.querySelector('button[onclick="downloadResume()"]')?.addEventListener('click', downloadResume);
 

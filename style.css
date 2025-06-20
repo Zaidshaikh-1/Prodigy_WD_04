@@ -426,6 +426,7 @@ body.dark-mode #dark-toggle {
   padding: 8px 12px;
   border-radius: 8px;
   transition: background 0.3s;
+  color: #838080;
 }
 
 /* Optional styling */
